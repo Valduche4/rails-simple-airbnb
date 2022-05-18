@@ -1,0 +1,32 @@
+<div class="banner">
+  <h1> <a href="/flats">Simple Airbnb</a></h1>
+    <div>
+      <a href="" class="btn btn-success greenbouton">Search</a>
+      <a href="/flats/new" class="btn btn-primary bluebouton">Add Flat</a>
+    </div>
+</div>
+
+<h2> All our Flats</h2>
+
+<div class="container">
+  <% @flats.each do |flat| %>
+    <div class="cards">
+      <img src="https://www.travaux.com/images/cms/original/ebcd4d3c-6a00-47d2-8165-6d9e192082af.jpeg" alt="apart">
+            <div class="card-info">
+              <div class="basics-infos">
+                <h3><%= flat.name %></h3>
+                <p><%= flat.address %></p>
+              </div>
+              <div class="numbers-infos">
+                <p><%= flat.price_per_night %></p>
+                <p><%= flat.number_of_guests %></p>
+              </div>
+            </div>
+        <div class="card-buttons">
+          <%= link_to "More info", flat_path(flat) %> |
+          <%= link_to "Edit", edit_flat_path(flat) %>  |
+          <%= link_to "Remove", flat_path(flat), method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+    </div>
+  <% end %>
+</div>
